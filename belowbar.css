@@ -1,0 +1,24 @@
+.belowbar{
+    
+    height: 50px;
+    width: 100%;
+    position: relative;
+    background-color: rgb(119, 123, 127);
+    margin: auto;
+  
+    }
+
+    .belowbar img{
+        height: 25px;
+        width: 20px;
+        left:46%;
+        position: relative;
+        margin: auto;
+        margin-top: 10px;
+        margin-left: 10px;
+    }
+
+    .belowbar img:hover {
+        transform: scale(1.2);
+        transition: transform 0.3s ease-in-out;
+    }

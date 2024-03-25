@@ -1,0 +1,105 @@
+<html>
+    <head>
+        <title>Form</title>
+    </head>
+    <body>
+        <h1>Station Registation Form</h1>
+        <form action="addStation.php" method="POST" id="form">
+            <table cellpadding="2">
+                <tr valign="top">
+                    <td>
+                        <label>Station Name:</label>
+                    </td>
+                    <td>
+                        <input type="text" name="StationName" id="StationNameField"><br/>
+                        <span class="error-msg" id="StationNameFieldMsg"></span>
+                    </td>
+                </tr>
+
+                <tr valign="top">
+                    <td>
+                        <label>Station Code:</label>
+                    </td>
+                    <td>
+                        <input type="text" name="StationCode" id="StationCodeField"><br/>
+                        <span class="error-msg" id="StationCodeFieldMsg"></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th colspan="2" style="text-align: right;">
+                        <button type="submit">ADD</button>
+                    </th>
+                </tr>
+            </table>
+
+        </form>
+    </body>
+
+    <script type="text/javaScript">
+        const form = document.getElementById('form');
+        const StationName = document.getElementById('StationNameField');
+        const StationNameFieldMsg = document.getElementById('StationNameFieldMsg');
+        const StationCode = document.getElementById('StationCodeField');
+        const StationCodeFieldMsg = document.getElementById('StationCodeFieldMsg');
+
+
+        function validateStationName() {
+            const Name = StationName.value.trim();
+            const crit1 = Name !="";
+            const crit2 = Name.length >= 3;
+
+            if(!crit1){
+                StationNameFieldMsg.innerHTML = "Station Name is required";
+                return false;
+            }
+
+            if(!crit2){
+                StationNameFieldMsg.innerHTML = "Station Name should has at lease 3 characters";
+                return false;
+            }
+            else{
+                StationNameFieldMsg.innerHTML = "";
+                return true;
+            }
+        }
+
+        function validateStationCode() {
+            const Code = StationCode.value.trim();
+            const crit3 = Code !="";
+            const crit4 = Code.length >= 3;
+
+            if(!crit3){
+                StationCodeFieldMsg.innerHTML = "Station Code is required";
+                return false;
+            }
+
+            if(!crit4){
+                StationCodeFieldMsg.innerHTML = "Station Code should has at lease 3 characters";
+                return false;
+            }
+            else{
+                StationCodeFieldMsg.innerHTML = "";
+                return true;
+            }
+        }
+            
+        form.addEventListener('submit', function(e){
+            const StationNameValidity = validateStationName();
+            const StationCodeValidity = validateStationCode();
+
+            if(!StationNameValidity || !StationCodeValidity) e.preventDefault();
+
+        });
+    </script>
+
+
+    <style type="text/css">
+    .error-msg{
+    color: #e60e0e;
+    }
+
+    </style>
+    
+</html>
+
